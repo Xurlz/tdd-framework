@@ -3,7 +3,8 @@
 - [x] Invoke setUp first
 - [x] Invoke tearDown afterward
 - [ ] Invoke tearDown even if test method fails
-- [ ] Run multiple tests
+- [ ] *Run multiple tests*
 - [x] Report collected results
 - [x] Log string in WasRun
-- [ ] *Report failed tests*
+- [x] Report failed tests
+- [ ] Catch and report setUp errors

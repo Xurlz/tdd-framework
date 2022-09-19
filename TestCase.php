@@ -9,9 +9,8 @@ class TestCase {
   function setUp() {}
   function tearDown() {}
 
-  function run()
+  function run(TestResult $result)
   {
-    $result = new TestResult;
     $result->testStarted();
     $this->setUp();
     try {
@@ -47,32 +46,22 @@ class TestResult {
   }
 }
 
-class WasRun extends TestCase {
-  public string $log;
-
-  function __construct(string $name)
+class TestSuite {
+  function __construct()
   {
-    parent::__construct($name);
+    $this->tests = [];
   }
-
-  function setUp()
+  function add(WasRun $test)
   {
-    $this->log = 'setUp ';
+    $this->tests[] = $test;
   }
-
-  function testMethod()
+  function run(TestResult $result)
   {
-    $this->log .= 'testMethod ';
-  }
-
-  function testBrokenMethod()
-  {
-    throw new Exception;
-  }
-
-  function tearDown()
-  {
-    $this->log .= 'tearDown ';
+    foreach( $this->tests as $test)
+    {
+      $test->run($result);
+    }
+    return $result;
   }
 }
 

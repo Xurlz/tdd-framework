@@ -3,14 +3,16 @@
 
 $files = [
   'TestCase',
-  'TestCaseTest'
+  'TestCaseTest',
+  'WasRun'
 ];
 
 $cases = [
   'TemplateMethod',
   'Result',
   'FailedResult',
-  'FailedResultFormatting'
+  'FailedResultFormatting',
+  'Suite'
 ];
 
 foreach ($files as $file) {
@@ -18,6 +20,6 @@ foreach ($files as $file) {
 }
 
 foreach ($cases as $case) {
-  (new TestCaseTest("test$case"))->run();
+  echo (new TestCaseTest("test$case"))->run(new TestResult)->summary().PHP_EOL;
 }
 
