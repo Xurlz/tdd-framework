@@ -1,10 +1,13 @@
 #!/usr/bin/env php
 <?php
 
+$classDirs = [ 'src/','./'];
 $files = [
-  'TestCase',
-  'TestCaseTest',
-  'WasRun'
+  "TestCase",
+  "TestCaseTest",
+  "WasRun",
+  "TestResult",
+  "TestSuite"
 ];
 
 $cases = [
@@ -15,11 +18,17 @@ $cases = [
   'Suite'
 ];
 
-foreach ($files as $file) {
-  require "$file.php";
+foreach ($classDirs as $classDir) {
+  if(file_exists($classDir)) {
+    foreach ($files as $file) {
+      if(file_exists("$classDir$file.php")) require "$classDir$file.php";
+    }
+  }
 }
 
+$result = new TestResult;
 foreach ($cases as $case) {
-  echo (new TestCaseTest("test$case"))->run(new TestResult)->summary().PHP_EOL;
+  (new TestCaseTest("test$case"))->run($result);
 }
+echo $result->summary().PHP_EOL;
 
