@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-$classDirs = [ 'src/','./'];
+$classDirs = [ 'src/','./']; // Funcionamento afetado pela ordem
 $files = [
   "TestCase",
   "TestCaseTest",
