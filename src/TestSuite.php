@@ -5,7 +5,7 @@ class TestSuite {
   {
     $this->tests = [];
   }
-  function add(WasRun $test)
+  function add(TestCase $test)
   {
     $this->tests[] = $test;
   }

@@ -15,7 +15,7 @@ class TestCase {
     $this->setUp();
     try {
       $this->{$this->name}();
-    } catch(Exception|AssertionError) {
+    } catch(Error|Exception|AssertionError) {
       $result->testFailed();
     }
     $this->tearDown();

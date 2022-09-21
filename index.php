@@ -3,19 +3,21 @@
 
 $classDirs = [ 'src/','./']; // Funcionamento afetado pela ordem
 $files = [
-  "TestCase",
-  "TestCaseTest",
-  "WasRun",
-  "TestResult",
-  "TestSuite"
+  'TestCase',
+  'TestCaseTest',
+  'WasRun',
+  'WasRunII',
+  'TestResult',
+  'TestSuite'
 ];
 
 $cases = [
   'TemplateMethod',
+  'BrokenTemplateMethod',
   'Result',
   'FailedResult',
   'FailedResultFormatting',
-  'Suite'
+  'Suite',
 ];
 
 foreach ($classDirs as $classDir) {

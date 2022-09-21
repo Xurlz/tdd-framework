@@ -1,6 +1,6 @@
 <?php
 
-class WasRun extends TestCase {
+class WasRunII extends TestCase {
   public string $log;
 
   function __construct(string $name)

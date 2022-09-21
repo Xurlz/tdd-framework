@@ -13,6 +13,13 @@ class TestCaseTest extends TestCase {
     assert('setUp testMethod tearDown ' == $test->log);
   }
 
+  function testBrokenTemplateMethod()
+  {
+    $test = new WasRun('testBrokenMethod');
+    $test->run($this->result);
+    assert('setUp testBrokenMethod tearDown ' == $test->log);
+  }
+
   function testResult()
   {
     $test = new WasRun('testMethod');
@@ -39,8 +46,9 @@ class TestCaseTest extends TestCase {
     $suite = new TestSuite();
     $suite->add(new WasRun('testMethod'));
     $suite->add(new WasRun('testBrokenMethod'));
+    $suite->add(new WasRunII('testMethod'));
     $suite->run($this->result);
-    assert('2 run, 1 failed' == $this->result->summary());
+    assert('3 run, 1 failed' == $this->result->summary());
   }
 
 }
