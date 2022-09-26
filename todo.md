@@ -8,4 +8,5 @@
 - [x] Log string in WasRun
 - [x] Report failed tests
 - [ ] Catch and report setUp errors
-- [ ] *Create TestSuite from a TestCase class*
+- [x] Create TestSuite from a TestCase class
+- [ ] *Require files by a FileLoader class*

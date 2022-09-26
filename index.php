@@ -1,14 +1,16 @@
 #!/usr/bin/env php
 <?php
 
-$classDirs = [ 'src/','./']; // Funcionamento afetado pela ordem
+// Funcionamento afetado pela ordem
+$classDirs = [ 'src/','./'];
 $files = [
   'TestCase',
   'TestCaseTest',
   'WasRun',
   'WasRunII',
   'TestResult',
-  'TestSuite'
+  'TestSuite',
+  'FileLoaderTest',
 ];
 
 $cases = [
@@ -20,17 +22,20 @@ $cases = [
   'Suite',
 ];
 
+require 'src/FileList.php';
+require 'src/FileLoader.php';
+$loader = new FileLoader;
 foreach ($classDirs as $classDir) {
-  if(file_exists($classDir)) {
-    foreach ($files as $file) {
-      if(file_exists("$classDir$file.php")) require "$classDir$file.php";
-    }
-  }
+  foreach($files as $file) $loader->add("$classDir$file.php");
 }
+$loader->load();
 
 $result = new TestResult;
+$suite = new TestSuite;
 foreach ($cases as $case) {
-  (new TestCaseTest("test$case"))->run($result);
+  $suite->add(new TestCaseTest("test$case"));
 }
+$suite->add(new FileLoaderTest('testLoadingFile'));
+$suite->run($result);
 echo $result->summary().PHP_EOL;
 
