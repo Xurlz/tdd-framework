@@ -5,7 +5,7 @@
         "src/WasRunII",
         "src/TestResult",
         "src/TestSuite",
-        "./TestCaseTest",
-        "./FileLoaderTest"
+        "tests/TestCaseTest",
+        "tests/FileLoaderTest"
     ]
 }
