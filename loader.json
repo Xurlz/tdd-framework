@@ -1,0 +1,11 @@
+{
+    "files": [
+        "src/TestCase",
+        "src/WasRun",
+        "src/WasRunII",
+        "src/TestResult",
+        "src/TestSuite",
+        "./TestCaseTest",
+        "./FileLoaderTest"
+    ]
+}

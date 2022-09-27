@@ -9,4 +9,4 @@
 - [x] Report failed tests
 - [ ] Catch and report setUp errors
 - [x] Create TestSuite from a TestCase class
-- [ ] *Require files by a FileLoader class*
+- [x] Require files by a FileLoader class
