@@ -11,7 +11,7 @@ class TestCase {
 
   function run(TestResult $result)
   {
-    $result->testStarted();
+    $result->testStarted($this->name);
     $this->setUp();
     try {
       $this->{$this->name}();

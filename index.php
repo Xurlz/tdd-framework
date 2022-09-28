@@ -13,7 +13,7 @@ $cases = [
   ['TestCaseTest', 'FailedResult'],
   ['TestCaseTest', 'FailedResultFormatting'],
   ['TestCaseTest', 'Suite'],
-  ['FileLoaderTest', 'LoadingFile']
+  ['FileLoaderTest', 'LoadingFile'],
 ];
 
 foreach ($cases as $case) {
