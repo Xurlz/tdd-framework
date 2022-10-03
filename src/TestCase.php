@@ -11,12 +11,12 @@ class TestCase {
 
   function run(TestResult $result)
   {
-    $result->testStarted($this->name);
+    $result->testStarted();
     $this->setUp();
     try {
       $this->{$this->name}();
     } catch(Error|Exception|AssertionError) {
-      $result->testFailed();
+      $result->testFailed($this::class.'.'.$this->name);
     }
     $this->tearDown();
   }

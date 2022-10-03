@@ -1,0 +1,11 @@
+{
+  "cases":[
+    ["TestCaseTest", "TemplateMethod"],
+    ["TestCaseTest", "BrokenTemplateMethod"],
+    ["TestCaseTest", "Result"],
+    ["TestCaseTest", "FailedResult"],
+    ["TestCaseTest", "FailedResultFormatting"],
+    ["TestCaseTest", "Suite"],
+    ["FileLoaderTest", "LoadingFile"]
+  ]
+}

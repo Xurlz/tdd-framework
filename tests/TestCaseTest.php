@@ -31,14 +31,16 @@ class TestCaseTest extends TestCase {
   {
     $test = new WasRun('testBrokenMethod');
     $test->run($this->result);
-    assert('1 run, 1 failed - testBrokenMethod' == $this->result->summary());
+    assert('1 run, 1 failed - WasRun.testBrokenMethod ' == $this->result->summary());
   }
 
   function testFailedResultFormatting()
   {
-    $this->result->testStarted('testMethod');
-    $this->result->testFailed();
-    assert('1 run, 1 failed - testMethod' == $this->result->summary());
+    $this->result->testStarted();
+    $this->result->testFailed('testMethod');
+    $this->result->testStarted();
+    $this->result->testFailed('testAnotherMethod');
+    assert('2 run, 2 failed - testMethod testAnotherMethod ' == $this->result->summary());
   }
 
   function testSuite()
@@ -47,8 +49,9 @@ class TestCaseTest extends TestCase {
     $suite->add(new WasRun('testMethod'));
     $suite->add(new WasRun('testBrokenMethod'));
     $suite->add(new WasRunII('testMethod'));
+    $suite->add(new WasRunII('testBrokenMethod'));
     $suite->run($this->result);
-    assert('3 run, 1 failed - testBrokenMethod' == $this->result->summary());
+    assert('4 run, 2 failed - WasRun.testBrokenMethod WasRunII.testBrokenMethod ' == $this->result->summary());
   }
 
 }

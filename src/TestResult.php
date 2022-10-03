@@ -5,24 +5,25 @@ class TestResult {
   {
     $this->runCount = 0;
     $this->errorCount = 0;
-    $this->testName = '';
+    $this->failedTestNames = '';
   }
 
-  function testStarted($testName)
+  function testStarted()
   {
     $this->runCount++;
-    $this->testName = "$testName";
   }
 
-  function testFailed()
+  function testFailed($testName)
   {
     $this->errorCount++;
+    $this->failedTestNames .= "$testName ";
   }
 
   function summary()
   {
-    if($this->errorCount == 0) return "$this->runCount run, $this->errorCount failed";
-    return "$this->runCount run, $this->errorCount failed - $this->testName";
+    $templatePrefix = "$this->runCount run, $this->errorCount failed";
+    if($this->errorCount == 0) return $templatePrefix;
+    return "$templatePrefix - $this->failedTestNames";
   }
 }
 
