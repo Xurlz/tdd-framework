@@ -12,5 +12,5 @@
 - [x] Require files by a FileLoader class
 - [x] Report name of failed tests
 - [x] Report name of multiple failed tests
-- [ ] *Report exception name of multiple tests*
+- [x] Report exception name of multiple tests
 - [ ] Create a main class
