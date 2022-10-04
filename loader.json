@@ -6,6 +6,7 @@
         "src/TestResult",
         "src/TestSuite",
         "tests/TestCaseTest",
-        "tests/FileLoaderTest"
+        "tests/FileLoaderTest",
+        "tests/MainTest"
     ]
 }

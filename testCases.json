@@ -6,6 +6,7 @@
     ["TestCaseTest", "FailedResult"],
     ["TestCaseTest", "FailedResultFormatting"],
     ["TestCaseTest", "Suite"],
-    ["FileLoaderTest", "LoadingFile"]
+    ["FileLoaderTest", "LoadingFile"],
+    ["MainTest", "Running"]
   ]
 }
