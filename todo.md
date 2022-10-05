@@ -13,4 +13,5 @@
 - [x] Report name of failed tests
 - [x] Report name of multiple failed tests
 - [x] Report exception name of multiple tests
+- [ ] *Report exception message of multiple tests*
 - [ ] Create a main class

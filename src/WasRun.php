@@ -21,7 +21,7 @@ class WasRun extends TestCase {
   function testBrokenMethod()
   {
     $this->log .= 'testBrokenMethod ';
-    throw new Exception;
+    throw new Exception('An Exception was thrown');
   }
 
   function tearDown()

@@ -16,7 +16,7 @@ class TestResult {
   function testFailed($testName)
   {
     $this->errorCount++;
-    $this->failedTestNames .= "$testName ";
+    return $this->failedTestNames .= "$testName ";
   }
 
   function summary()

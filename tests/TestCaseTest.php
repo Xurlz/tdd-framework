@@ -31,7 +31,11 @@ class TestCaseTest extends TestCase {
   {
     $test = new WasRun('testBrokenMethod');
     $test->run($this->result);
-    assert('1 run, 1 failed - WasRun.testBrokenMethod.Exception ' == $this->result->summary());
+    assert(
+      '1 run, 1 failed - WasRun.testBrokenMethod.Exception: "An Exception was thrown" '
+      ==
+      $this->result->summary()
+    );
   }
 
   function testFailedResultFormatting()
@@ -40,7 +44,7 @@ class TestCaseTest extends TestCase {
     $this->result->testFailed('testMethod');
     $this->result->testStarted();
     $this->result->testFailed('testAnotherMethod');
-    assert('2 run, 2 failed - testMethod testAnotherMethod ' == $this->result->summary());
+    assert("2 run, 2 failed - \ntestMethod \ntestAnotherMethod\n " == $this->result->summary());
   }
 
   function testSuite()
@@ -53,7 +57,10 @@ class TestCaseTest extends TestCase {
     foreach($cases as $class => $methods) foreach($methods as $method) $suite->add(new $class($method));
     $suite->run($this->result);
     assert(
-      '4 run, 2 failed - WasRun.testBrokenMethod.Exception WasRunII.testBrokenMethod.Error ' ==
+      '4 run, 2 failed - '.
+      'WasRun.testBrokenMethod.Exception: "An Exception was thrown" '.
+      'WasRunII.testBrokenMethod.Error: "" '
+      ==
       $this->result->summary()
     );
   }
