@@ -5,6 +5,7 @@
         "src/WasRunII",
         "src/TestResult",
         "src/TestSuite",
+        "src/FailMessage",
         "src/Main",
         "tests/TestCaseTest",
         "tests/FileLoaderTest",
