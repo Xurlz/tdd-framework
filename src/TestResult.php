@@ -5,7 +5,7 @@ class TestResult {
   {
     $this->runCount = 0;
     $this->errorCount = 0;
-    $this->failedTestNames = '';
+    $this->failedTestNames = "";
   }
 
   function testStarted()

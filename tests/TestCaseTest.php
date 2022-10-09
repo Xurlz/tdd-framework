@@ -44,7 +44,7 @@ class TestCaseTest extends TestCase {
     $this->result->testFailed('testMethod');
     $this->result->testStarted();
     $this->result->testFailed('testAnotherMethod');
-    assert("2 run, 2 failed - \ntestMethod \ntestAnotherMethod\n " == $this->result->summary());
+    assert("2 run, 2 failed - testMethod testAnotherMethod " == $this->result->summary());
   }
 
   function testSuite()

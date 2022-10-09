@@ -1,5 +1,24 @@
 <?php
 
+class FailMessage {
+  function __construct(
+    string $className,
+    string $testName,
+    Error|Exception|AssertionError $exception
+  )
+  {
+    $this->className = $className;
+    $this->testName = $testName;
+    $this->exception = $exception;
+  }
+
+  function __toString()
+  {
+    return $this->className.'.'.  $this->testName.'.'.  $this->exception::class.': "'. $this->exception->getMessage().'"';
+  }
+
+}
+
 class TestCase {
   function __construct(string $name)
   {
@@ -16,14 +35,10 @@ class TestCase {
     try {
       $this->{$this->name}();
     } catch(Error|Exception|AssertionError $e) {
-      $result->testFailed($this->getFailMessage($e));
+      $result->testFailed(new FailMessage($this::class,$this->name,$e));
     }
     $this->tearDown();
   }
 
-  function getFailMessage(Error|Exception|AssertionError $e)
-  {
-    return $this::class.'.'.  $this->name.'.'.  $e::class.': "'.  $e->getMessage().'"';
-  }
 }
 
