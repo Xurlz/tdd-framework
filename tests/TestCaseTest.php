@@ -27,6 +27,11 @@ class TestCaseTest extends TestCase {
     assert('1 run, 0 failed' == $this->result->summary());
   }
 
+  function testFailedResultMessage()
+  {
+    assert('foo.bar.Exception: "barz"' == (new FailedResultMessage('foo','bar', new Exception('barz'))));
+  }
+
   function testFailedResult()
   {
     $test = new WasRun('testBrokenMethod');

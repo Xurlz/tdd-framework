@@ -16,7 +16,7 @@ class TestCase {
     try {
       $this->{$this->name}();
     } catch(Error|Exception|AssertionError $e) {
-      $result->testFailed(new FailMessage($this::class,$this->name,$e));
+      $result->testFailed(new FailedResultMessage($this::class,$this->name,$e));
     }
     $this->tearDown();
   }
