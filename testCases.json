@@ -3,6 +3,7 @@
     ["TestCaseTest", "TemplateMethod"],
     ["TestCaseTest", "BrokenTemplateMethod"],
     ["TestCaseTest", "Result"],
+    ["TestCaseTest", "ResultMessage"],
     ["TestCaseTest", "FailedResult"],
     ["TestCaseTest", "FailedResultMessage"],
     ["TestCaseTest", "FailedResultFormatting"],

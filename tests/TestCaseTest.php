@@ -27,6 +27,11 @@ class TestCaseTest extends TestCase {
     assert('1 run, 0 failed' == $this->result->summary());
   }
 
+  function testResultMessage()
+  {
+    assert('1 run, 0 failed' === (new ResultMessage(1,0))->__toString());
+  }
+
   function testFailedResultMessage()
   {
     assert('foo.bar.Exception: "barz"' == (new FailedResultMessage('foo','bar', new Exception('barz'))));
