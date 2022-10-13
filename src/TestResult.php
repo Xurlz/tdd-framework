@@ -5,7 +5,6 @@ class TestResult {
   {
     $this->runCount = 0;
     $this->errorCount = 0;
-    $this->failedTestNames = "";
   }
 
   function testStarted()
@@ -16,14 +15,11 @@ class TestResult {
   function testFailed($testName)
   {
     $this->errorCount++;
-    return $this->failedTestNames .= "$testName ";
   }
 
   function summary()
   {
-    $templatePrefix = "$this->runCount run, $this->errorCount failed";
-    if($this->errorCount == 0) return $templatePrefix;
-    return "$templatePrefix - $this->failedTestNames";
+    return "$this->runCount run, $this->errorCount failed";
   }
 }
 
