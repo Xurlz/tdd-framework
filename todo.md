@@ -15,3 +15,5 @@
 - [x] Report exception name of multiple tests
 - [ ] *Report exception message of multiple tests*
 - [ ] Create a main class
+- [ ] Create a dump loader/testCases.json script
+

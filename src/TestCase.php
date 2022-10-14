@@ -16,7 +16,8 @@ class TestCase {
     try {
       $this->{$this->name}();
     } catch(Error|Exception|AssertionError $e) {
-      $result->testFailed('WasRun.'.$this->name.'.'.$e::class.': "'.$e->getMessage().'" ');
+      // template: className.classMethod.ExceptionClassName:"ExceptionMessage"
+      $result->testFailed($this::class.'.'.$this->name.'.'.$e::class.':"'.$e->getMessage().'"');
     }
     $this->tearDown();
   }

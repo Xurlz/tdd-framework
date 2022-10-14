@@ -5,6 +5,7 @@ class TestResult {
   {
     $this->runCount = 0;
     $this->errorCount = 0;
+    $this->errorMessage = '';
   }
 
   function testStarted()
@@ -12,14 +13,17 @@ class TestResult {
     $this->runCount++;
   }
 
-  function testFailed($testName)
+  function testFailed($message)
   {
     $this->errorCount++;
+    $this->errorMessage .= "$message ";
   }
 
   function summary()
   {
-    return "$this->runCount run, $this->errorCount failed";
+    $prefix = "$this->runCount run, $this->errorCount failed";
+    if($this->errorCount > 0) return "$prefix - $this->errorMessage";
+    return $prefix;
   }
 }
 
