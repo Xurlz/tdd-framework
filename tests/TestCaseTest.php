@@ -10,28 +10,40 @@ class TestCaseTest extends TestCase {
   {
     $test = new WasRun('testMethod');
     $test->run($this->result);
-    assert('setUp testMethod tearDown ' == $test->log);
+    $this->assertEquals(
+      'setUp testMethod tearDown ',
+      $test->log
+    );
   }
 
   function testBrokenTemplateMethod()
   {
     $test = new WasRun('testBrokenMethod');
     $test->run($this->result);
-    assert('setUp testBrokenMethod tearDown ' == $test->log);
+    $this->assertEquals(
+      'setUp testBrokenMethod tearDown ',
+      $test->log
+    );
   }
 
   function testResult()
   {
     $test = new WasRun('testMethod');
     $test->run($this->result);
-    assert('1 run, 0 failed' == $this->result->summary());
+    $this->assertEquals(
+      '1 run, 0 failed',
+      $this->result->summary()
+    );
   }
 
   function testFailedResult()
   {
     $test = new WasRun('testBrokenMethod');
     $test->run($this->result);
-    assert('1 run, 1 failed - WasRun.testBrokenMethod.Exception:"An Exception was thrown" ' == $this->result->summary());
+    $this->assertEquals(
+      '1 run, 1 failed - WasRun.testBrokenMethod.Exception:"An Exception was thrown" ',
+      $this->result->summary()
+    );
   }
 
   function testFailedResultFormatting()
@@ -40,7 +52,13 @@ class TestCaseTest extends TestCase {
     $this->result->testFailed('testMethod');
     $this->result->testStarted();
     $this->result->testFailed('testAnotherMethod');
-    assert('2 run, 2 failed - testMethod testAnotherMethod ' == $this->result->summary());
+    $this->result->testStarted();
+    $this->result->testFailed('testYetAnotherMethod');
+
+    $this->assertEquals(
+      "3 run, 3 failed -\n\ttestMethod\n\ttestAnotherMethod\n\ttestYetAnotherMethod\n\t",
+      $this->result->summary()
+    );
   }
 
   function testSuite()
@@ -50,10 +68,16 @@ class TestCaseTest extends TestCase {
       'WasRunII' => ['testMethod','testBrokenMethod'],
     ];
     $suite = new TestSuite();
-    foreach($cases as $class => $methods) foreach($methods as $method) $suite->add(new $class($method));
+    foreach($cases as $class => $methods) {
+      foreach($methods as $method) $suite->add(new $class($method));
+    }
     $suite->run($this->result);
-    assert('4 run, 2 failed - WasRun.testBrokenMethod.Exception:"An Exception was thrown" WasRunII.testBrokenMethod.Error:"" ' == $this->result->summary());
+    $this->assertEquals(
+      "4 run, 2 failed -".
+      "\n\tWasRun.testBrokenMethod.Exception:\"An Exception was thrown\"".
+      "\n\tWasRunII.testBrokenMethod.Error:\"\"\n\t",
+      $this->result->summary()
+    );
   }
-
 }
 

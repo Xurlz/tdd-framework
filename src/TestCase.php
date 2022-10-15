@@ -22,5 +22,14 @@ class TestCase {
     $this->tearDown();
   }
 
+  function assertEquals($expected,$actual) : bool
+  {
+    return assert(
+      $expected ===
+      $actual,
+      "\n\t\t'$expected' expected,\n\t\t'$actual' found\n\t"
+    );
+  }
+
 }
 
