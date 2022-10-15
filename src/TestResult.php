@@ -5,7 +5,7 @@ class TestResult {
   {
     $this->runCount = 0;
     $this->errorCount = 0;
-    $this->errorMessage = [];
+    $this->errorMessages = [];
   }
 
   function testStarted()
@@ -16,17 +16,12 @@ class TestResult {
   function testFailed($message)
   {
     $this->errorCount++;
-    $this->errorMessage[] = $message;
+    $this->errorMessages[] = $message;
   }
 
   function summary()
   {
-    $summaryStats = "$this->runCount run, $this->errorCount failed";
-    if($this->errorCount == 0) return $summaryStats;
-    $separator = ($this->errorCount > 1)?"\n\t":' ';
-    $errorDetails = '';
-    foreach($this->errorMessage as $errorMessage) $errorDetails .= "$errorMessage$separator";
-    return "$summaryStats -$separator$errorDetails";
+    return (new TestResultMessage($this->runCount,$this->errorCount,$this->errorMessages))->__toString();
   }
 }
 

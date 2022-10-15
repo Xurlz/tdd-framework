@@ -4,6 +4,7 @@
         "src/WasRun",
         "src/WasRunII",
         "src/TestResult",
+        "src/TestResultMessage",
         "src/TestSuite",
         "src/Main",
         "tests/TestCaseTest",

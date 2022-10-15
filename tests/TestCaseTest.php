@@ -36,6 +36,19 @@ class TestCaseTest extends TestCase {
     );
   }
 
+  function testResultMessage()
+  {
+    $this->assertEquals(
+      '1 run, 0 failed',
+      (new TestResultMessage(1,0))->__toString()
+    );
+    $this->assertEquals(
+      '2 run, 1 failed - errorMessage ',
+      (new TestResultMessage(2,1,['errorMessage']))->__toString()
+    );
+      
+  }
+
   function testFailedResult()
   {
     $test = new WasRun('testBrokenMethod');
@@ -48,12 +61,17 @@ class TestCaseTest extends TestCase {
 
   function testFailedResultFormatting()
   {
-    $this->result->testStarted();
-    $this->result->testFailed('testMethod');
-    $this->result->testStarted();
-    $this->result->testFailed('testAnotherMethod');
-    $this->result->testStarted();
-    $this->result->testFailed('testYetAnotherMethod');
+    $methods = [
+      'testMethod',
+      'testAnotherMethod',
+      'testYetAnotherMethod'
+    ];
+
+    foreach($methods as $method)
+    {
+      $this->result->testStarted();
+      $this->result->testFailed($method);
+    }
 
     $this->assertEquals(
       "3 run, 3 failed -\n\ttestMethod\n\ttestAnotherMethod\n\ttestYetAnotherMethod\n\t",

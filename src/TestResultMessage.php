@@ -1,17 +1,20 @@
 <?php
 
 class TestResultMessage {
-  function __construct(int $runCount, int $failCount, array $failMessages = [])
+  function __construct(int $runCount, int $errorCount, array $errorMessages = [])
   {
     $this->runCount = $runCount;
-    $this->failCount = $failCount;
-    $this->failMessages = $failMessages;
+    $this->errorCount = $errorCount;
+    $this->errorMessages = $errorMessages;
   }
   function __toString()
   {
-    $prefix = "$this->runCount run, $this->failCount failed ";
-    if($this->failMessages == 0) return $prefix; 
-    return "$prefix - testMethod ";
+    $summaryStats = "$this->runCount run, $this->errorCount failed";
+    if($this->errorCount == 0) return $summaryStats;
+    $separator = ($this->errorCount > 1)?"\n\t":' ';
+    $errorDetails = '';
+    foreach($this->errorMessages as $errorMessage) $errorDetails .= "$errorMessage$separator";
+    return "$summaryStats -$separator$errorDetails";
   }
 } 
 
