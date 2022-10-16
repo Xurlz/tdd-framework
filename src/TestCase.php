@@ -12,8 +12,8 @@ class TestCase {
   function run(TestResult $result)
   {
     $result->testStarted();
-    $this->setUp();
     try {
+      $this->setUp();
       $this->{$this->name}();
     } catch(Error|Exception|AssertionError $e) {
       // template: className.classMethod.ExceptionClassName:"ExceptionMessage"

@@ -6,6 +6,20 @@ class TestCaseTest extends TestCase {
     $this->result = new TestResult;
   }
 
+  function testBrokenSetUp()
+  {
+    $suite = new TestSuite;
+    $suite->add(new BrokenSetUpTestCase('testMethod'));
+    $suite->add(new NonExistentClassTestCase('testMethod'));
+    $suite->run($this->result);
+    $this->assertEquals(
+      "2 run, 2 failed -\n\t".
+      "BrokenSetUpTestCase.testMethod.Error:\"\"\n\t".
+      "NonExistentClassTestCase.testMethod.Error:\"Class \"Foo\" not found\"\n\t",
+      $this->result->summary()
+    );
+  }
+
   function testTemplateMethod()
   {
     $test = new WasRun('testMethod');
@@ -34,19 +48,6 @@ class TestCaseTest extends TestCase {
       '1 run, 0 failed',
       $this->result->summary()
     );
-  }
-
-  function testResultMessage()
-  {
-    $this->assertEquals(
-      '1 run, 0 failed',
-      (new TestResultMessage(1,0))->__toString()
-    );
-    $this->assertEquals(
-      '2 run, 1 failed - errorMessage ',
-      (new TestResultMessage(2,1,['errorMessage']))->__toString()
-    );
-      
   }
 
   function testFailedResult()

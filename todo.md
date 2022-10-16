@@ -7,7 +7,7 @@
 - [x] Report collected results
 - [x] Log string in WasRun
 - [x] Report failed tests
-- [ ] Catch and report setUp errors
+- [x] Catch and report setUp errors
 - [x] Create TestSuite from a TestCase class
 - [x] Require files by a FileLoader class
 - [x] Report name of failed tests

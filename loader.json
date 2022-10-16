@@ -3,10 +3,13 @@
         "src/TestCase",
         "src/WasRun",
         "src/WasRunII",
+        "src/BrokenSetUpTestCase",
+        "src/NonExistentClassTestCase",
         "src/TestResult",
         "src/TestResultMessage",
         "src/TestSuite",
         "src/Main",
+        "tests/TestResultTest",
         "tests/TestCaseTest",
         "tests/FileLoaderTest",
         "tests/MainTest"

@@ -7,7 +7,8 @@ $result = new TestResult;
 $suite = new TestSuite;
 
 foreach ((json_decode(file_get_contents('./testCases.json')))->cases as $case) {
-  $suite->add(new $case[0]("test$case[1]")); 
+  $class = "$case[0]Test";
+  $suite->add(new $class("test$case[1]"));
 }
 
 $suite->run($result);

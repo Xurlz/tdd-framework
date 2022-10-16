@@ -1,13 +1,15 @@
 {
   "cases":[
-    ["TestCaseTest", "TemplateMethod"],
-    ["TestCaseTest", "BrokenTemplateMethod"],
-    ["TestCaseTest", "Result"],
-    ["TestCaseTest", "ResultMessage"],
-    ["TestCaseTest", "FailedResult"],
-    ["TestCaseTest", "FailedResultFormatting"],
-    ["TestCaseTest", "Suite"],
-    ["FileLoaderTest", "LoadingFile"],
-    ["MainTest", "Running"]
+    ["TestCase", "BrokenSetUp"],
+    ["TestCase", "TemplateMethod"],
+    ["TestCase", "BrokenTemplateMethod"],
+    ["TestCase", "Result"],
+    ["TestCase", "FailedResult"],
+    ["TestCase", "FailedResultFormatting"],
+    ["TestCase", "Suite"],
+    ["FileLoader", "LoadingFile"],
+    ["TestResult", "Message"],
+    ["TestResult", "FailMessage"],
+    ["Main", "Running"]
   ]
 }
