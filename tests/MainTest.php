@@ -1,11 +1,11 @@
 <?php
 
-class MainTest extends TestCase {
+class CommandTest extends TestCase {
   function testRunning()
   {
-    $test = new Main;
+    $test = new Command;
     $test->run();
-    assert($test->wasRun);
+    assert(is_array($test->output));
   }
 }
 

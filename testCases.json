@@ -10,6 +10,6 @@
     ["FileLoader", "LoadingFile"],
     ["TestResult", "Message"],
     ["TestResult", "FailMessage"],
-    ["Main", "Running"]
+    ["Command", "Running"]
   ]
 }
