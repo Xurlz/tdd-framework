@@ -7,21 +7,33 @@ class SuiteTest extends TestCase {
   }
   function testSuite()
   {
-    $this->suite->add(new WasRun('testMethod'));
-    $this->suite->add(new WasRun('brokenMethod'));
-    $this->suite->add(new WasRun('testMethod'));
-    assert(
-      '3 run, 1 failed' ===
-      $this->suite->run(new TestResult)->summary()
-    );
-  }
-  function testFailedSetUp()
-  {
-    $this->suite->add(new BrokenSetUp('testMethod'));
-    $this->suite->add(new WasRun('testMethod'));
-    assert(
-      'A setUp error has found' ===
-      $this->suite->run(new TestResult)->summary()
-    );
+    $cases = [
+      [
+        'parameters' => [
+          ['class' => 'WasRun', 'method' => 'testMethod'],
+          ['class' => 'WasRun', 'method' => 'brokenMethod'],
+          ['class' => 'WasRun', 'method' =>'testMethod']
+        ],
+        'result' => '3 run, 1 failed'
+      ],
+      [
+        'parameters' => [
+          ['class' => 'BrokenSetUp', 'method' => 'testMethod'],
+          ['class' => 'WasRun', 'method' => 'brokenMethod'],
+        ],
+        'result' => 'A setUp error has found'
+      ]
+    ];
+    foreach($cases as $case) {
+      foreach($case['parameters'] as $parameter){
+        $class = $parameter['class'];
+        $this->suite->add(new $class($parameter['method']));
+      }
+      assert(
+        $case['result'] ===
+        $this->suite->run(new TestResult)->summary()
+      );
+    }
   }
 }
+

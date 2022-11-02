@@ -16,7 +16,6 @@ foreach($files as $file) require $file;
 
 $cases = [
   ['class' => 'SuiteTest', 'method' => 'testSuite'],
-  ['class' => 'SuiteTest', 'method' => 'testFailedSetUp'],
   ['class' => 'TestCaseTest', 'method' => 'testTemplateMethod'],
   ['class' => 'TestCaseTest', 'method' => 'testResult'],
   ['class' => 'TestCaseTest', 'method' => 'testFailedResult'],
