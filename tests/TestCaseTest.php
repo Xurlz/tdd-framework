@@ -8,7 +8,18 @@ class TestCaseTest extends TestCase {
     $test->run($result);
     assert('setUp testMethod tearDown ' === $test->log);
   }
-  function testResultData()
+  function testResult()
+  {
+    foreach ($this->getTestResultCases() as $case) {
+      $test = new $case['class']($case['method']);
+      $result = new TestResult;
+      assert(
+        $case['result'] ===
+        $test->run($result)->summary()
+      );
+    }
+  }
+  function getTestResultCases()
   {
     return [
       [
@@ -27,17 +38,6 @@ class TestCaseTest extends TestCase {
         'result' => 'A setUp error has found'
       ]
     ];
-  }
-  function testResult()
-  {
-    foreach ($this->testResultData() as $parameter) {
-      $test = new $parameter['class']($parameter['method']);
-      $result = new TestResult;
-      assert(
-        $parameter['result'] ===
-        $test->run($result)->summary()
-      );
-    }
   }
 
 }

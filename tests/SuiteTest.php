@@ -7,7 +7,20 @@ class SuiteTest extends TestCase {
   }
   function testSuite()
   {
-    $cases = [
+    foreach($this->getCases() as $case) {
+      foreach($case['parameters'] as $parameter){
+        $class = $parameter['class'];
+        $this->suite->add(new $class($parameter['method']));
+      }
+      assert(
+        $case['result'] ===
+        $this->suite->run(new TestResult)->summary()
+      );
+    }
+  }
+  function getCases()
+  {
+    return [
       [
         'parameters' => [
           ['class' => 'WasRun', 'method' => 'testMethod'],
@@ -24,16 +37,6 @@ class SuiteTest extends TestCase {
         'result' => 'A setUp error has found'
       ]
     ];
-    foreach($cases as $case) {
-      foreach($case['parameters'] as $parameter){
-        $class = $parameter['class'];
-        $this->suite->add(new $class($parameter['method']));
-      }
-      assert(
-        $case['result'] ===
-        $this->suite->run(new TestResult)->summary()
-      );
-    }
   }
 }
 

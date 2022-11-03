@@ -9,3 +9,4 @@
 - [x] ~~Log string in WasRun~~
 - [x] ~~Catch and report setUp errors~~
 - [ ] Auto testMethod loading in WasRun
+
