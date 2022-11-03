@@ -18,8 +18,6 @@ $cases = [
   ['class' => 'SuiteTest', 'method' => 'testSuite'],
   ['class' => 'TestCaseTest', 'method' => 'testTemplateMethod'],
   ['class' => 'TestCaseTest', 'method' => 'testResult'],
-  ['class' => 'TestCaseTest', 'method' => 'testFailedResult'],
-  ['class' => 'TestCaseTest', 'method' => 'testFailedSetUp'],
   ['class' => 'ResultFormattingTest', 'method' => 'testFailedResultFormatting'],
   ['class' => 'ResultFormattingTest', 'method' => 'testSetUpFailedResultFormatting'],
 ];
